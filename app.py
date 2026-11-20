@@ -2,12 +2,14 @@ from flask import Flask, render_template
 
 app= Flask(__name__)
 
-# This is dynamic page.
+
 @app.route("/")
 def home():
-    is_logged_in= True
-    marks= 66
-    return render_template("index.html", is_logged_in= is_logged_in, marks= marks)
+    courses= ["Python", "Flask", "Machine Learning", "SQL"]
+    student= {"Name" : "Mohit",
+    "Course" : "Flask", 
+    "City" : "Dehradun"}
+    return render_template("index.html", courses= courses, student= student)
 
 if __name__== "__main__":
     app.run(debug= True)
