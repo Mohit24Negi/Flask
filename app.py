@@ -1,32 +1,14 @@
-from flask import Flask
+from flask import Flask, request
 
 app= Flask(__name__)
 
-@app.route("/")
-def home():
-    return "welcome to home page"
-
-@app.route("/user_name/<string:name>")
-def user_name(name):
-    return f"user name: {name}"
-
-@app.route("/user_id/<int:id>")
-def user_id(id):
-    return f"user id: {id}"
-
-@app.route("/price/<float:amount>")
-def price(amount):
-    return f"Price: {amount}"
-
-# path converter
-@app.route("/files/<path:file_path>")
-def files(file_path):
-    return file_path
-
-# UUID converter
-@app.route("/student/<uuid:user_id>")
-def student(user_id):
-    return str(user_id)
+# multiple Query parameters
+@app.route("/search")
+def search():
+    name= request.args.get("name", "Guest")
+    last_name= request.args.get("last_name")
+    course= request.args.get("course", "unknown")
+    return f"{name} {last_name} is learning {course}"
 
 if __name__== "__main__":
     app.run(debug= True)
