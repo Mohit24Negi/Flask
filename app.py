@@ -6,17 +6,27 @@ app= Flask(__name__)
 def home():
     return "welcome to home page"
 
-@app.route("/users")
-def users():
-    return "welcome to users page"
+@app.route("/user_name/<string:name>")
+def user_name(name):
+    return f"user name: {name}"
 
-@app.route("/user/<name>")
-def user(name):
-    return f"Hello {name}"
+@app.route("/user_id/<int:id>")
+def user_id(id):
+    return f"user id: {id}"
 
-@app.route("/student/<name>/<course>")
-def student(name, course):
-    return f"{name} is learning {course}"
+@app.route("/price/<float:amount>")
+def price(amount):
+    return f"Price: {amount}"
+
+# path converter
+@app.route("/files/<path:file_path>")
+def files(file_path):
+    return file_path
+
+# UUID converter
+@app.route("/student/<uuid:user_id>")
+def student(user_id):
+    return str(user_id)
 
 if __name__== "__main__":
     app.run(debug= True)
