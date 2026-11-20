@@ -5,14 +5,16 @@ app= Flask(__name__)
 # This is static page.
 @app.route("/")
 def home():
-    name= "Mohit"
-    course= "Flask"
+    first_name= "Mohit"
+    last_name= "Negi"
+    course= ["Python", "Flask", "Machine Learning", "SQL"]
     city= "Dehradun"
-    age= 28
-    return render_template("index.html", name= name,
+    price= 600
+    return render_template("index.html", first_name= first_name,
+    last_name= last_name,
     course= course,
     city= city,
-    age= age)
+    price= price)
 
 if __name__== "__main__":
     app.run(debug= True)
