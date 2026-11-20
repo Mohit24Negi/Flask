@@ -5,11 +5,15 @@ app= Flask(__name__)
 
 @app.route("/")
 def home():
-    courses= ["Python", "Flask", "Machine Learning", "SQL"]
-    student= {"Name" : "Mohit",
-    "Course" : "Flask", 
-    "City" : "Dehradun"}
-    return render_template("index.html", courses= courses, student= student)
+    return render_template("index.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/carrer")
+def carrer():
+    return render_template("carrer.html")
 
 if __name__== "__main__":
     app.run(debug= True)

@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Hello World</title>
-</head>
-<body>
-    <ul>
-        <h1>Courses:</h1>
-        {% for course in courses %}
-        <li> {{loop.index0}} {{course}}</li>
-        {% endfor %}
-    </ul>
-    <hr>
-    <ul>
-        <h1>Courses:</h1>
-        {% for key, value in student.items() %}
-        <li> {{key}} : {{value}}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "base.html "%}
+{% block content%}
+<h1>Welcome to Flask Course</h1>
+<p>This is Home Page</p>
+{% endblock %}
