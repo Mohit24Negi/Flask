@@ -1,14 +1,11 @@
-from flask import Flask, request
+from flask import Flask, render_template
 
 app= Flask(__name__)
 
-# multiple Query parameters
-@app.route("/search")
-def search():
-    name= request.args.get("name", "Guest")
-    last_name= request.args.get("last_name")
-    course= request.args.get("course", "unknown")
-    return f"{name} {last_name} is learning {course}"
+# This is static page.
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 if __name__== "__main__":
     app.run(debug= True)
