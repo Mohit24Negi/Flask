@@ -14,11 +14,22 @@ def about():
 @app.route("/carrer", methods= ["GET", "POST"])
 def carrer():
     if request.method == "POST":
-        name= request.form["username"]
-        email= request.form.get("email")
-        Message= request.form.get("Message")
+        name= request.form.get("name", "").strip()
+        email= request.form.get("email", "").strip()
+        age= request.form.get("age", "").strip()
+
+        if not name:
+            return "Name is Required"
+        if not email:
+            return "Name is Email"
+        if not age:
+            return "Name is Age"
+        if not age.isdigit():
+            return "Age Must be Number"
+        age= int(age)
+        return "Registration Sucessfull"
         
-    return render_template("carrer.html", name= name)
+    return render_template("carrer.html")
 
 if __name__== "__main__":
     app.run(debug= True)
