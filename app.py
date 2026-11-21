@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 app= Flask(__name__)
 
@@ -27,9 +27,13 @@ def carrer():
         if not age.isdigit():
             return "Age Must be Number"
         age= int(age)
-        return "Registration Sucessfull"
+        return redirect(url_for("success"))
         
     return render_template("carrer.html")
+
+@app.route("/reg-success")
+def success():
+    return "Registration successful"
 
 if __name__== "__main__":
     app.run(debug= True)
