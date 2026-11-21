@@ -2,4 +2,21 @@
 {% block content%}
 <h1>Carrer Page</h1>
 <p>This is Carrer Page</p>
+<form action="/carrer" method="post">
+    <div>
+        <label>Name</label>
+        <input type="text" name="username" placeholder="Enter Your Name">
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Enter Your Email">
+    </div>
+    <div>
+        <label >Message</label>
+        <textarea name="Message" placeholder="Enter Your Message"></textarea>
+        
+    </div>
+    <button type="submit">send message</button>
+    
+</form>
 {% endblock %}
