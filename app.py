@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 
 app= Flask(__name__)
 
-
+app.secret_key= "change-this-in-prod"
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -19,15 +19,19 @@ def carrer():
         age= request.form.get("age", "").strip()
 
         if not name:
-            return "Name is Required"
+            flash("Name is Required !", "danger")
+            return redirect(url_for("carrer"))
+            
         if not email:
-            return "Name is Email"
+            flash("Email is Required !", "danger")
+            return redirect(url_for("carrer"))
         if not age:
-            return "Name is Age"
+            flash("Age is Required !", "danger")
+            return redirect(url_for("carrer"))
         if not age.isdigit():
             return "Age Must be Number"
         age= int(age)
-        return redirect(url_for("success"))
+        flash("Registration successful !", "success")
         
     return render_template("carrer.html")
 
